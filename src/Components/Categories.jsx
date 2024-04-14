@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const Categories = () => {
+  const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+  const [category, setCategory] = useState(0);
+  const onClickCategory = (id) => {
+    setCategory(id);
+  };
   return (
-    <div class="categories">
+    <div className="categories">
       <ul>
-        <li class="active">Все</li>
-        <li>Мясные</li>
-        <li>Вегетарианская</li>
-        <li>Гриль</li>
-        <li>Острые</li>
-        <li>Закрытые</li>
+        {categories.map((el, index) => (
+          <li
+            key={crypto.randomUUID()}
+            onClick={() => onClickCategory(index)}
+            className={category === index ? 'active' : ''}>
+            {el}
+          </li>
+        ))}
       </ul>
     </div>
   );
